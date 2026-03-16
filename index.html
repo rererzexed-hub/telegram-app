@@ -3,24 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Моё приложение</title>
-
-  <!-- Подключаем стили -->
+  <title>Стройматериалы</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Telegram SDK — обязательно! -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
 
-  <div class="container">
-    <h1 id="greeting">Привет!</h1>
-    <p>Это моё Telegram Mini App</p>
-    <button id="myButton">Нажми меня</button>
+  <header>
+    <h1>🏗️ СтройМаркет</h1>
+    <p>Всё для строительства и ремонта</p>
+  </header>
+
+  <div class="categories">
+    <button class="cat-btn active" onclick="filterCategory('all')">Все</button>
+    <button class="cat-btn" onclick="filterCategory('cement')">Цемент</button>
+    <button class="cat-btn" onclick="filterCategory('wood')">Дерево</button>
+    <button class="cat-btn" onclick="filterCategory('tools')">Инструменты</button>
   </div>
 
-  <!-- Подключаем скрипт — всегда в конце body -->
-  <script src="script.js"></script>
+  <div class="products" id="productList"></div>
 
+  <div class="cart-bar" id="cartBar" onclick="openCart()">
+    🛒 Корзина: <span id="cartCount">0</span> товаров —
+    <span id="cartTotal">0</span> ₽
+  </div>
+
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <h2>🛒 Ваша корзина</h2>
+      <div id="cartItems"></div>
+      <div class="cart-sum">Итого: <strong id="cartSum">0</strong> ₽</div>
+      <button class="order-btn" onclick="sendOrder()">Оформить заказ</button>
+      <button class="close-btn" onclick="closeCart()">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
